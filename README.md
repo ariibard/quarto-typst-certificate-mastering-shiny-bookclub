@@ -2,7 +2,7 @@
 
 A quarto template that uses typst to create a PDF certificate
 
-![](preview.jpg)
+<img src="preview.jpg" width="400px">
 
 ## Installation
 
@@ -10,6 +10,18 @@ A quarto template that uses typst to create a PDF certificate
 
 ```
 quarto use template royfrancis/quarto-typst-certificate
+```
+
+## Render
+
+```
+quarto render index.qmd
+```
+
+To modify parameters;
+
+```
+quarto render index.qmd --metadata participant:"Sanna Jonsson"
 ```
 
 ---
