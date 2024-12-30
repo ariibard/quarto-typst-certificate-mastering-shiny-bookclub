@@ -1,6 +1,6 @@
 # quarto-typst-certificate
 
-A quarto template that uses typst to create a PDF certificate
+A quarto extension that uses typst to create a PDF certificate
 
 <img src="preview.jpg" width="400px">
 
