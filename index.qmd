@@ -23,7 +23,7 @@ date-format: "[Printed] DD-MMM-YYYY [at] HH:mm[.]"
 papersize: a4
 format:
   nbis-certificate-typst:
-    keep-typ: true
+    keep-typ: false
     font-paths: fonts
 ---
 

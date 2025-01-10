@@ -23,10 +23,10 @@
 
 // Some quarto-specific definitions.
 
-#show raw.where(block: true): block.with(
-    fill: luma(230), 
-    width: 100%, 
-    inset: 8pt, 
+#show raw.where(block: true): set block(
+    fill: luma(230),
+    width: 100%,
+    inset: 8pt,
     radius: 2pt
   )
 
@@ -40,6 +40,10 @@
     fields.below = fields.below.amount
   }
   return block.with(..fields)(new_content)
+}
+
+#let unescape-eval(str) = {
+  return eval(str.replace("\\", ""))
 }
 
 #let empty(v) = {
@@ -61,6 +65,54 @@
 
 }
 
+// Subfloats
+// This is a technique that we adapted from https://github.com/tingerrr/subpar/
+#let quartosubfloatcounter = counter("quartosubfloatcounter")
+
+#let quarto_super(
+  kind: str,
+  caption: none,
+  label: none,
+  supplement: str,
+  position: none,
+  subrefnumbering: "1a",
+  subcapnumbering: "(a)",
+  body,
+) = {
+  context {
+    let figcounter = counter(figure.where(kind: kind))
+    let n-super = figcounter.get().first() + 1
+    set figure.caption(position: position)
+    [#figure(
+      kind: kind,
+      supplement: supplement,
+      caption: caption,
+      {
+        show figure.where(kind: kind): set figure(numbering: _ => numbering(subrefnumbering, n-super, quartosubfloatcounter.get().first() + 1))
+        show figure.where(kind: kind): set figure.caption(position: position)
+
+        show figure: it => {
+          let num = numbering(subcapnumbering, n-super, quartosubfloatcounter.get().first() + 1)
+          show figure.caption: it => {
+            num.slice(2) // I don't understand why the numbering contains output that it really shouldn't, but this fixes it shrug?
+            [ ]
+            it.body
+          }
+
+          quartosubfloatcounter.step()
+          it
+          counter(figure.where(kind: it.kind)).update(n => n - 1)
+        }
+
+        quartosubfloatcounter.update(0)
+        body
+      }
+    )#label]
+  }
+}
+
+// callout rendering
+// this is a figure show rule because callouts are crossreferenceable
 #show figure: it => {
   if type(it.kind) != "string" {
     return it
@@ -94,37 +146,9 @@
       new_title))
 
   block_with_new_content(old_callout,
-    new_title_block +
+    block(below: 0pt, new_title_block) +
     old_callout.body.children.at(1))
 }
-
-#show ref: it => locate(loc => {
-  let target = query(it.target, loc).first()
-  if it.at("supplement", default: none) == none {
-    it
-    return
-  }
-
-  let sup = it.supplement.text.matches(regex("^45127368-afa1-446a-820f-fc64c546b2c5%(.*)")).at(0, default: none)
-  if sup != none {
-    let parent_id = sup.captures.first()
-    let parent_figure = query(label(parent_id), loc).first()
-    let parent_location = parent_figure.location()
-
-    let counters = numbering(
-      parent_figure.at("numbering"), 
-      ..parent_figure.at("counter").at(parent_location))
-      
-    let subcounter = numbering(
-      target.at("numbering"),
-      ..target.at("counter").at(target.location()))
-    
-    // NOTE there's a nonbreaking space in the block below
-    link(target.location(), [#parent_figure.at("supplement") #counters#subcounter])
-  } else {
-    it
-  }
-})
 
 // 2023-10-09: #fa-icon("fa-info") is not working, so we'll eval "#fa-info()" instead
 #let callout(body: [], title: "Callout", background_color: rgb("#dddddd"), icon: none, icon_color: black) = {
@@ -142,10 +166,13 @@
         fill: background_color, 
         width: 100%, 
         inset: 8pt)[#text(icon_color, weight: 900)[#icon] #title]) +
-      block(
-        inset: 1pt, 
-        width: 100%, 
-        block(fill: white, width: 100%, inset: 8pt, body)))
+      if(body != []){
+        block(
+          inset: 1pt, 
+          width: 100%, 
+          block(fill: white, width: 100%, inset: 8pt, body))
+      }
+    )
 }
 
 #set text(font: "Lato", fill: rgb("#444444"))
@@ -241,6 +268,7 @@
     }
   )
 }
+
 #show: nbis-certificate.with(
       title: "Certificate",
   
@@ -271,7 +299,7 @@ NBIS | Uppsala University
 ],
   
      footnotes: [This is a certificate of participation. Participants are not evaluated. \
-#strong[National Bioinformatics Infrastructure Sweden \(NBIS)] is a distributed national research infrastructure supported by the Swedish Research Council, Science for Life Laboratory, Knut and Alice Wallenberg Foundation and all major Swedish universities in providing state-of-the-art bioinformatics to the Swedish life science research community.
+#strong[National Bioinformatics Infrastructure Sweden (NBIS)] is a distributed national research infrastructure supported by the Swedish Research Council, Science for Life Laboratory, Knut and Alice Wallenberg Foundation and all major Swedish universities in providing state-of-the-art bioinformatics to the Swedish life science research community.
 
 ],
   
@@ -280,17 +308,16 @@ NBIS | Uppsala University
       date: [Printed 03-Apr-2024 at 14:17.],
   )
 
-
 has participated in the NBIS workshop #strong[Advanced analysis of data] \
 held in #strong[Uppsala] from #strong[18 Mar - 23 Mar, 2024];. \
 \
 The workshop consisted of 40 hours of lectures and computer exercises. This included the following topics: \
 \
-- Introduction to data & data analysis \
-- Datatypes and data structures \
-- Literate programming using data \
-- Loops, conditional statements, functions and variable scope \
-- Importing and exporting data \
-- Visualization of data \
-- Introduction to tidy data \
-- Overview of package anatomy
+\- Introduction to data & data analysis \
+\- Datatypes and data structures \
+\- Literate programming using data \
+\- Loops, conditional statements, functions and variable scope \
+\- Importing and exporting data \
+\- Visualization of data \
+\- Introduction to tidy data \
+\- Overview of package anatomy
