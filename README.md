@@ -26,4 +26,4 @@ quarto render index.qmd --metadata participant:"Sanna Jonsson"
 
 ---
 
-2024 • Roy Francis
+2025 • Roy Francis
