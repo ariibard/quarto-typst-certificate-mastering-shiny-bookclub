@@ -21,8 +21,8 @@
 
 ) = {
 
-  // body
-  set text(12.5pt)
+  // body font
+  set text(12.5pt, font: "Lato")
 
   set page(
     margin: (left: 2.5cm, right: 2.5cm, top: 4.5cm, bottom: 5cm),

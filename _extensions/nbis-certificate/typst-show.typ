@@ -37,7 +37,6 @@
     sign-height: $sign-height$,
   $endif$
 
-
   $if(teacher)$
     teacher: [$teacher$],
   $endif$
