@@ -14,6 +14,12 @@
   $if(participant)$
     participant: [$participant$],
   $endif$
+  
+  $if(logo)$
+    logo: (
+      path: "$logo.path$"
+    ), 
+  $endif$
 
   $if(bg-image)$
     bg-image: (

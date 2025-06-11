@@ -1,23 +1,20 @@
 ---
-headnotes-1: "www.nbis.se"
-headnotes-2: "NBIS • TRAINING"
-title: "Certificate"
+headnotes-1: "Club de lectura Mastering Shiny"
+headnotes-2: "R Ladies Buenos Aires • R en Buenos Aires"
+title: "Certificado de agradecimiento"
 bg-image: 
   path: "assets/background.png"
 logo-image:
   path: "assets/logo.png"
-participant: "John Doe"
-sign-image:
-  path: "assets/signature.png"
-teacher: |
-  Course Leader | **John Doe, PhD** \
-  Associate Professor in Bioinformatics \
-  NBIS | Uppsala University
+  
+logo: 
+  path: "assets/shiny.png"
+participant: "Jesica Formoso"
 footnotes: |
-  This is a certificate of participation. Participants are not evaluated. \
-  **National Bioinformatics Infrastructure Sweden (NBIS)** is a distributed national research infrastructure supported by the Swedish Research Council, Science for Life Laboratory, Knut and Alice Wallenberg Foundation and all major Swedish 
-  universities in providing state-of-the-art bioinformatics to the Swedish life science research community.
-version: "v2.0."
+  **R-Ladies Buenos Aires** es una comunidad que promueve la participación de mujeres y disidencias en la programación en R. \
+  **R en Buenos Aires** es un grupo de usuarios que impulsa el uso del lenguaje R con fines científicos, educativos y sociales. \
+  Ambas comunidades forman parte del ecosistema global de R y organizan actividades gratuitas, abiertas y colaborativas.
+version: "v1.0."
 date: last-modified
 date-format: "[Printed] DD-MMM-YYYY [at] HH:mm[.]"
 papersize: a4
@@ -27,16 +24,8 @@ format:
     font-paths: fonts
 ---
 
-has participated in the NBIS workshop **Advanced analysis of data** \
-held in **Uppsala** from **18 Mar - 23 Mar, 2024**. \
-\
-The workshop consisted of 40 hours of lectures and computer exercises. This included the following topics: \
-\
-- Introduction to data & data analysis \
-- Datatypes and data structures \
-- Literate programming using data \
-- Loops, conditional statements, functions and variable scope \
-- Importing and exporting data \
-- Visualization of data \
-- Introduction to tidy data \
-- Overview of package anatomy
+ha participado como **expositora** en el *Club de Lectura Mastering Shiny* \
+el día 5 de Marzo de 2025 presentando el capítulo *Your first shiny app y Basic UI*.  \
+Agradecemos su generosidad al compartir conocimientos y experiencias que fortalecen nuestra comunidad \
+y promueven una ciencia de datos más diversa, inclusiva y accesible.
+

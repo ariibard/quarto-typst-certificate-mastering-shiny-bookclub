@@ -4,16 +4,17 @@
 
 #let nbis-certificate(
 
+  logo: none,
   title: none,
   date: none,
   headnotes-1: none,
   headnotes-2: none,
-  gap: 72pt,
+  gap: 5pt,
   participant: none,
   bg-image: none,
   logo-image: none,
   sign-image: none,
-  sign-height: 15mm,
+  sign-height: 25mm,
   teacher: none,
   footnotes: none,
   version: "Unknown",
@@ -24,8 +25,10 @@
   // body font
   set text(12.5pt, font: "Lato")
 
-  set page(
-    margin: (left: 2.5cm, right: 2.5cm, top: 4.5cm, bottom: 5cm),
+set page(
+    width: 29.7cm,
+    height: 21cm,
+    margin: (left: 2.5cm, right: 2.5cm, top: 5.5cm, bottom: 4cm),
     background: if bg-image != none {
       place(center + top, image(bg-image.path, height: 100%))
     },
@@ -36,11 +39,12 @@
       grid(
         columns: 1fr,
         rows: (12pt, 14pt),
-        row-gutter: 2.5pt,
+        row-gutter: 0pt,
         text(weight: "medium", size: 11pt, tracking: 1.05pt, align(left + bottom, headnotes-1)),
-        text(weight: "medium", size: 14pt, tracking: 1.1pt, align(left + bottom, headnotes-2))
+        text(weight: "medium", size: 14pt, tracking: 1.1pt, align(left + bottom, headnotes-2)),
       ),
-      align(right, image(logo-image.path, height: 13mm))
+      
+      align(right, pad(top: 100mm, image(logo-image.path, height: 35mm)))
     ),
     footer: {
       set text(8pt)
@@ -69,25 +73,30 @@
   grid(
     columns: 1fr,
     row-gutter: 20pt,
-
+    
+ // logo secundario centrado arriba del título
+    
+    if logo != none {
+        align(center, pad(image(logo.path, height: 45mm)))
+      },
+  
     // title.
     pad(
-      top: 10pt,
+      top: 5pt,
       bottom: gap,
-      text(36pt, weight: 700, tracking: 1.3pt, title)
+      align(center, text(30pt, weight: 300, tracking: 1.3pt, title))
     ),
 
     // participant name
-    text(22pt, weight: 600, participant),
+    align(center, text(26pt, weight: 600, participant)),
 
     // body flow
-    {
-      set par(justify: true)
+    align(center, {
       body
       if sign-image != none {
         image(sign-image.path, height: sign-height)
       }
-      teacher
-    }
+       teacher
+    })
   )
 }
