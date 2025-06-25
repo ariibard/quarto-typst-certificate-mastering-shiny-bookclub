@@ -28,23 +28,27 @@
 set page(
     width: 29.7cm,
     height: 21cm,
-    margin: (left: 2.5cm, right: 2.5cm, top: 5.5cm, bottom: 4cm),
+    margin: (left: 2.5cm, right: 2.5cm, top: 10cm, bottom: 4cm),
     background: if bg-image != none {
       place(center + top, image(bg-image.path, height: 100%))
     },
 
-    header: grid(
-      columns: (1fr, 1fr),
+header:  
+  grid(
+    columns: (1fr, 1fr),
+    row-gutter: 0pt,
+
+    pad(bottom: 90pt,
+    grid(
+      columns: 1fr,
+      rows: (11pt, 14pt),
       row-gutter: 0pt,
-      grid(
-        columns: 1fr,
-        rows: (12pt, 14pt),
-        row-gutter: 0pt,
-        text(weight: "medium", size: 11pt, tracking: 1.05pt, align(left + bottom, headnotes-1)),
-        text(weight: "medium", size: 14pt, tracking: 1.1pt, align(left + bottom, headnotes-2)),
-      ),
-      
-      align(right, pad(top: 100mm, image(logo-image.path, height: 35mm)))
+      text(weight: "medium", size: 12pt, tracking: 1.05pt, align(left + bottom, headnotes-1)),
+      text(weight: "medium", size: 15pt, tracking: 1.1pt, align(left + bottom, headnotes-2)),
+    )
+    ),
+
+    align(right, pad(top: 150mm, right: 35pt, image(logo-image.path, height: 55mm)))
     ),
     footer: {
       set text(8pt)
@@ -69,34 +73,30 @@ set page(
   // underline links.
   show link: underline
 
-  // page body
+pad(top: -130pt,
   grid(
     columns: 1fr,
     row-gutter: 20pt,
-    
- // logo secundario centrado arriba del título
-    
+
     if logo != none {
-        align(center, pad(image(logo.path, height: 45mm)))
-      },
-  
-    // title.
+      align(center, pad(image(logo.path, height: 45mm)))
+    },
+
     pad(
       top: 5pt,
       bottom: gap,
       align(center, text(30pt, weight: 300, tracking: 1.3pt, title))
     ),
 
-    // participant name
     align(center, text(26pt, weight: 600, participant)),
 
-    // body flow
     align(center, {
       body
       if sign-image != none {
         image(sign-image.path, height: sign-height)
       }
-       teacher
+      teacher
     })
   )
+)
 }
