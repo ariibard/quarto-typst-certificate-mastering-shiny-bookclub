@@ -9,7 +9,7 @@ logo-image:
   
 logo: 
   path: "assets/shiny.png"
-participant: "Andrea Gomez Vargas"
+participant: "Nombre Apellido"
 footnotes: |
   **R-Ladies Buenos Aires** es una comunidad que promueve la participación de mujeres y disidencias en la programación en R. \
   **R en Buenos Aires** es un grupo de usuarios que impulsa el uso del lenguaje R con fines científicos, educativos y sociales. \
@@ -25,7 +25,7 @@ format:
 ---
 
 ha participado como **expositora** en el *Club de Lectura Mastering Shiny* \
-el día 30 de julio de 2025 presentando los capítulos *Functions y Shiny modules*.  \
+el día [dia] de [mes] de 2025 presentando los capítulos *[Nombre del capítulo]*.  \
 Agradecemos su generosidad al compartir conocimientos y experiencias que fortalecen nuestra comunidad \
 y promueven una ciencia de datos más diversa, inclusiva y accesible.
 
