@@ -49,5 +49,5 @@ quarto render index.qmd
 
 Plantilla original: [quarto-typst-certificate](https://github.com/royfrancis/quarto-typst-certificate)
 
-
+Elaborado por: Ariana Bardauil
 
