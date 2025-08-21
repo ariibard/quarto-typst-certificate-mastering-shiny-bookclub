@@ -9,7 +9,7 @@ logo-image:
   
 logo: 
   path: "assets/shiny.png"
-participant: "Jesica Formoso"
+participant: "Andrea Gomez Vargas"
 footnotes: |
   **R-Ladies Buenos Aires** es una comunidad que promueve la participación de mujeres y disidencias en la programación en R. \
   **R en Buenos Aires** es un grupo de usuarios que impulsa el uso del lenguaje R con fines científicos, educativos y sociales. \
@@ -25,7 +25,7 @@ format:
 ---
 
 ha participado como **expositora** en el *Club de Lectura Mastering Shiny* \
-el día 5 de Marzo de 2025 presentando el capítulo *Your first shiny app y Basic UI*.  \
+el día 30 de julio de 2025 presentando los capítulos *Functions y Shiny modules*.  \
 Agradecemos su generosidad al compartir conocimientos y experiencias que fortalecen nuestra comunidad \
 y promueven una ciencia de datos más diversa, inclusiva y accesible.
 
